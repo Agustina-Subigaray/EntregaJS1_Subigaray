@@ -133,6 +133,10 @@
             height: auto;
             display: block;
             border-radius: variables.$radio-borde-imagen;
+            transition: transform 0.3s ease-in-out;
+            aspect-ratio: 4/3;
+            object-fit: cover;
+            &:hover img, img.imagen-zoom:hover {transform: scale(1.03);}
         }
         figcaption {
             padding: variables.$espaciado-md;
@@ -163,7 +167,7 @@
         border-radius: variables.$radio-borde-principal;
         padding: variables.$espaciado-md;
 
-        h2 {
+        h2, h3{
             margin-bottom: variables.$espaciado-sm;
             font-family: variables.$fuente-secundaria;
         }
@@ -283,4 +287,13 @@ form {
         flex-wrap: wrap;
         justify-content: space-between;
     }
+}
+.fondo-inicio,
+.fondo-inspiracion-contacto-blog {
+    background-attachment: scroll;
+    background-position: center top;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .grid-inspiracion figure img { transition: none !important; }
 }

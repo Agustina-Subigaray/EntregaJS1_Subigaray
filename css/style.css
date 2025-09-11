@@ -364,4 +364,13 @@ form button {
   }
 }
 
+body{ overflow-x:hidden;}
+img,video,canvas,svg{display:block;max-width: 100%; height: auto;}
+.grid-inspiracion figure img { aspect-ratio:  4/3; object-fit:cover;}
+@media(max-widht: 768px) {
+  .fondo-inicio,
+  .fondo-inspiracion-contacto-blog{
+    background-attachment: scroll; background-position: center top;
+  }
+}
 /*# sourceMappingURL=style.css.map */
