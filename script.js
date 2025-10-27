@@ -1,81 +1,55 @@
-function encuestaUsuario() {
-  //Creamos un objeto para guardar las respuestas
-  const encuesta = {
-    nombre: "",
-    edad: 0,
-    tipoVelas: ""
-  };
+// ====================== Encuesta ======================
+const formEncuesta = document.getElementById('formEncuesta');
+const resumenEncuesta = document.getElementById('resumenEncuesta');
 
-  //Pedir el nombre
-  while(encuesta.nombre === "" || encuesta.nombre === null) {
-    encuesta.nombre = prompt("¿Cómo es tu nombre?");
-  }
+formEncuesta.addEventListener('submit', (e) => {
+    e.preventDefault();
 
-  //Pedir la edad
-  while(encuesta.edad <= 0 || isNaN(encuesta.edad)) {
-    encuesta.edad = parseInt(prompt("¿Cuál es tu edad?"));
-  }
+    const nombre = document.getElementById('nombreUsuario').value;
+    const edad = document.getElementById('edadUsuario').value;
+    const tipoVela = document.getElementById('tipoVela').value;
 
-  //Preguntar tipo de vela con números
-  let opcion = 0;
-  while(opcion < 1 || opcion > 6 || isNaN(opcion)) {
-    opcion = parseInt(prompt(`
-Elegí el número de la vela que más te gusta:
-1. Velas para exterior
-2. Velas perfumadas
-3. Velas con formas
-4. Velas rústicas
-5. Velas de té
-6. Velas flotantes
-`));
-  }
+    // Definir recomendaciones según el tipo de vela
+    let recomendacion = '';
+    switch(tipoVela) {
+        case "Velas para exterior":
+            recomendacion = "Perfectas para decorar tu patio o terraza y disfrutar del aire libre.";
+            break;
+        case "Velas perfumadas":
+            recomendacion = "Ideales para aromatizar tu hogar y crear un ambiente acogedor.";
+            break;
+        case "Velas con formas":
+            recomendacion = "Decorativas y originales para cualquier ocasión o regalo.";
+            break;
+        case "Velas rústicas":
+            recomendacion = "Darán un estilo natural y cálido a tu hogar.";
+            break;
+        case "Velas de té":
+            recomendacion = "Pequeñas y prácticas para ambientar cualquier lugar de manera elegante.";
+            break;
+        case "Velas flotantes":
+            recomendacion = "Perfectas para decorar con agua y generar un efecto relajante.";
+            break;
+        default:
+            recomendacion = "Gracias por completar la encuesta.";
+    }
 
-  //Asignar significado con switch
-  let descripcionVelas = "";
-  switch(opcion) {
-    case 1:
-      descripcionVelas = "Velas para exterior: perfectas para decorar tu patio o terraza.";
-      break;
-    case 2:
-      descripcionVelas = "Velas perfumadas: aromatizan tu hogar y crean un ambiente acogedor.";
-      break;
-    case 3:
-      descripcionVelas = "Velas con formas: decorativas y originales para cualquier ocasión.";
-      break;
-    case 4:
-      descripcionVelas = "Velas rústicas: estilo natural y cálido para tu espacio.";
-      break;
-    case 5:
-      descripcionVelas = "Velas de té: pequeñas y prácticas para ambientar cualquier lugar.";
-      break;
-    case 6:
-      descripcionVelas = "Velas flotantes: ideales para decorar con agua y dar un efecto relajante.";
-      break;
-  }
+    const encuesta = { nombre, edad, tipoVela, recomendacion };
 
-  // Guardamos la descripción en el objeto
-  encuesta.tipoVelas = descripcionVelas;
+    // Guardar en localStorage
+    let encuestas = JSON.parse(localStorage.getItem('encuestas')) || [];
+    encuestas.push(encuesta);
+    localStorage.setItem('encuestas', JSON.stringify(encuestas));
 
-  //Mostrar resumen final al usuario
-  alert(`
-¡Gracias por completar la encuesta!
-Nombre: ${encuesta.nombre}
-Edad: ${encuesta.edad}
-Tipo de velas favoritas: ${encuesta.tipoVelas}
+    // Mostrar resumen y recomendación
+    resumenEncuesta.innerHTML = `
+        <div class="alert alert-success">
+            <strong>¡Gracias por completar la encuesta, ${nombre}!</strong><br>
+            Edad: ${edad}<br>
+            Tipo de velas favoritas: ${tipoVela}<br>
+            <em>Recomendación:</em> ${recomendacion}
+        </div>
+    `;
 
-Sigue recorriendo nuestra web, y si querés, accede a nuestra sección Inspiración.
-  `);
-
-  //Preguntar si quiere completar otra encuesta
-  let repetir = confirm("¿Querés completar otra encuesta?");
-  if(repetir) {
-    encuestaUsuario(); // se llama a sí misma
-  }
-
-  //Mostrar en consola para depuración
-  console.log(encuesta);
-}
-
-//Llamar la función para que se ejecute al cargar la página
-encuestaUsuario();
-
+    formEncuesta.reset();
+});

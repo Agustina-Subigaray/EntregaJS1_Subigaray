@@ -8,6 +8,7 @@
 
 <script src="https://kit.fontawesome.com/0a990f3ea8.js" crossorigin="anonymous"></script>
 
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="./css/style.css" />
   <meta property="og:title" content="Lume - Velas y aromas para tu hogar">
   <meta property="og:description" content="creamos espacios donde el aroma y la luz se transforman">
@@ -49,6 +50,41 @@
           está pensado para reconectar con lo simple, con el hogar, con vos.
         </p>
     </section>
+
+<!-- NUEVA SECCIÓN: Encuesta -->
+<section id="encuestaVelas" class="container py-5">
+  <div class="card p-4 mb-5" style="background-color: rgba(255,255,255,0.6); border-radius: 1rem;">
+    <h2 class="text-center mb-4">Encuesta de Velas</h2>
+    <p class="text-center mb-4">Completá tus datos y descubrí qué tipo de velas se adaptan mejor a tu estilo.</p>
+
+    <form id="formEncuesta">
+      <div class="mb-3">
+        <label for="nombreUsuario" class="form-label">Nombre:</label>
+        <input type="text" id="nombreUsuario" class="form-control" placeholder="Tu nombre" required>
+      </div>
+      <div class="mb-3">
+        <label for="edadUsuario" class="form-label">Edad:</label>
+        <input type="number" id="edadUsuario" class="form-control" placeholder="Tu edad" min="1" required>
+      </div>
+      <div class="mb-3">
+        <label for="tipoVela" class="form-label">Tipo de vela favorita:</label>
+        <select id="tipoVela" class="form-select" required>
+          <option value="">Elegí una opción</option>
+          <option value="Velas para exterior">Velas para exterior</option>
+          <option value="Velas perfumadas">Velas perfumadas</option>
+          <option value="Velas con formas">Velas con formas</option>
+          <option value="Velas rústicas">Velas rústicas</option>
+          <option value="Velas de té">Velas de té</option>
+          <option value="Velas flotantes">Velas flotantes</option>
+        </select>
+      </div>
+      <button type="submit" class="btn btn-primary w-100">Enviar encuesta</button>
+    </form>
+
+    <div id="resumenEncuesta" class="mt-4 p-3" style="background-color: rgba(230,230,226,0.5); border-radius: 0.5rem;"></div>
+  </div>
+</section>
+
   </main>
   <footer class="container-footer">
    <div class="div-redes">
