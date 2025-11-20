@@ -1,0 +1,5 @@
+[
+  { "id": 1, "nombre": "Vela aromática Lavanda", "descripcion": "Relajante", "precio": 3500 },
+  { "id": 2, "nombre": "Vela de té", "descripcion": "Pack de 10 unidades", "precio": 2000 },
+  { "id": 3, "nombre": "Vela rústica grande", "descripcion": "Decorativa", "precio": 5000 }
+]
