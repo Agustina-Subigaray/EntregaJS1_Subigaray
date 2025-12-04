@@ -8,7 +8,7 @@
   <meta name="description" content="Conoce la historia de Lume: diseño, aromas y objetos hechos con mucho amor"/>
   <meta property="og:title" content="Lume - Velas y aromas para tu hogar">
   <meta property="og:description" content="Nuestra historia y filosofia: luz, calma y aromas para tu hogar.">
-  <meta property="og:image" content="https://agustina-subigaray.github.io/proyectoFinal/assets/img/presentacion.jpg">
+  <meta property="og:image" content="{% static 'assets/img/presentacion.jpg' %}">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="https://agustina-subigaray.github.io/proyectoFinal/pages/sobre-nosotros.html">
@@ -61,13 +61,13 @@
     <section class="sobre-nosotros">
       <h2>Diseñamos experiencias que despiertan los sentidos</h2>
       <p>En Lume, cada rincón es una pausa.</p>
-      <img  src="../assets/img/vela-sobre.jpg" alt="ventana con velas" />
+      <img  src="{% static 'assets/img/vela-sobre.jpg' %}" alt="ventana con velas" />
     </section>
 
    
     <section class="link-inspiracion">
       <p>¿Querés ver cómo llevamos esa inspiración a cada rincón? <br />
-      <a href="../pages/inspiracion.html">Explorá nuestro mundo</a> en la sección Inspiración.</p>
+      <a href="{% url 'inspiracion' %}">Explorá nuestro mundo</a> en la sección Inspiración.</p>
     </section>
  
   </main>
