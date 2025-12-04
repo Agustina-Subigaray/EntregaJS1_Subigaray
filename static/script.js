@@ -1,7 +1,8 @@
 // ====================== Encuesta ======================
+// Capturamos el formulario y el contenedor donde se mostrará el resumen
 const formEncuesta = document.getElementById('formEncuesta');
 const resumenEncuesta = document.getElementById('resumenEncuesta');
-
+// Si existen, agregamos el evento submit
 if (formEncuesta && resumenEncuesta) {
     formEncuesta.addEventListener('submit', (e) => {
         e.preventDefault();
@@ -45,17 +46,18 @@ if (formEncuesta && resumenEncuesta) {
             </div>
         `;
 
-        formEncuesta.reset();
+        formEncuesta.reset(); // Limpiamos el formulario
     });
 }
 
 // ====================== Catálogo de Velas ======================
+// Cargar velas desde el JSON y mostrarlas en la página
 async function cargarVelas() {
     const catalogo = document.getElementById("catalogo");
     if (!catalogo) return;
 
     try {
-        const resp = await fetch("data/velas.json");
+        const resp = await fetch(urlVelas);
         const velas = await resp.json();
         mostrarVelas(velas);
     } catch (error) {
@@ -106,6 +108,6 @@ function mostrarSeleccion() {
         <p class="total">Total: $${seleccion.reduce((acc, v) => acc + v.precio, 0)}</p>
     `;
 }
-
+// Llamada inicial para cargar velas
 cargarVelas();
 

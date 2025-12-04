@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  {% load static %}
+
   <meta charset="UTF-8" />
   <meta name="description" content="Diseño, calma y aromas. Lume crea velar y objetos para tranformar tu hogar en un refugio"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +11,7 @@
 <script src="https://kit.fontawesome.com/0a990f3ea8.js" crossorigin="anonymous"></script>
 
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="./css/style.css" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
   <meta property="og:title" content="Lume - Velas y aromas para tu hogar">
   <meta property="og:description" content="creamos espacios donde el aroma y la luz se transforman">
   <meta property="og:image" content="https://agustina-subigaray.github.io/proyectoFinal/assets/img/presentacion.jpg">
@@ -20,7 +22,7 @@
 <body class="fondo-inicio">
   <header class="container-nav">
       <div class="logo">
-        <img src="../assets/img/Lume.png" alt="Logo Lume" />
+        <img src="{% static 'assets/img/Lume.png' %}" alt="Logo Lume" />
       </div>
       
       <input type="checkbox" id="menu-toggle">
@@ -28,20 +30,16 @@
 
       <nav class = "menu-nav">
         <ul class="lista">
-          <li><a href="index.html">Inicio</a></li>
-          <li><a href="pages/sobre-nosotros.html">Sobre Nosotros</a></li>
-          <li><a href="pages/inspiracion.html">Inspiración</a></li>
-          <li><a href="pages/blog.html">Blog</a></li>
-          <li><a href="pages/contacto.html">Contacto</a></li>
-          <li><a href="simulador.html">Simulador</a></li>
-
+          <li><a href="{% url 'index' %}">Inicio</a></li>
+          <li><a href="{% url 'blog' %}">Blog</a></li>
+          <li><a href="{% url 'contacto' %}">Contacto</a></li>
+          <li><a href="{% url 'inspiracion' %}">Inspiración</a></li>
+          <li><a href="{% url 'sobre-nosotros' %}">Sobre Nosotros</a></li>
+          <li><a href="{% url 'simulador' %}">Simulador</a></li>
+          <li><a href="{% url 'carrito' %}">Carrito</a></li>
         </ul>
       </nav>
   </header>
-
-    <section id="descripcion-simulador">
-    <p>Bienvenidos al simulador de LUME. Aquí podés completar una pequeña encuesta sobre tus preferencias de velas y recibir un resumen personalizado con recomendaciones según tu elección. ¡Descubrí qué tipo de velas se adaptan mejor a tu estilo!</p>
-  </section>
   
   <main>
     <section class="container-description">

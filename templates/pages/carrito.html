@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Carrito de Velas</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="fondo-inicio">
+
+  <header class="container-nav">
+    <div class="logo">
+      <img src="{% static 'assets/img/Lume.png' %}" alt="Logo Lume" />
+    </div>
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburguesa">&#9776;</label>
+    <nav class="menu-nav">
+      <ul class="lista">
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'simulador' %}">Simulador</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  
+    <main class="container py-5">
+    <div class="card p-4" style="background-color: rgba(255,255,255,0.6); border-radius: 1rem;">
+
+    <h2>Tu carrito</h2>
+    {% if velas %}
+      <ul>
+        {% for v in velas %}
+          <li>{{ v.nombre }} - ${{ v.precio }}</li>
+        {% endfor %}
+      </ul>
+      <p>Total: ${{ total }}</p>
+      <a href="{% url 'simulador' %}">Seguir comprando</a>
+    {% else %}
+      <p>El carrito está vacío.</p>
+      <a href="{% url 'simulador' %}">Ir al simulador</a>
+    {% endif %}
+  </main>
+
+</body>
+</html>
+

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
+  {% load static %}
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contacto - Lume</title>
@@ -14,13 +15,13 @@
   <link rel="canonical" href="https://agustina-subigaray.github.io/proyectoFinal/pages/contacto.html">
 
   <script src="https://kit.fontawesome.com/0a990f3ea8.js" crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" />
 </head>
 <body class="fondo-inspiracion-contacto-blog">
   <header class="container-nav"> 
       <div class="logo">
         <a href="/index.html">
-        <img src="/assets/img/Lume.png" alt="Logo Lume" />
+        <img src="{% static 'assets/img/Lume.png' %}" alt="Logo Lume" />
         </a>
       </div>
 
@@ -29,11 +30,13 @@
 
       <nav class="menu-nav">
         <ul class="lista">
-          <li><a href="../index.html">Inicio</a></li>
-          <li><a href="../pages/sobre-nosotros.html">Sobre nosotros</a></li>
-          <li><a href="../pages/inspiracion.html">Inspiración</a></li>
-          <li><a href="../pages/blog.html">Blog</a></li>
-          <li><a href="../pages/contacto.html">Contacto</a></li>
+          <li><a href="{% url 'index' %}">Inicio</a></li>
+          <li><a href="{% url 'blog' %}">Blog</a></li>
+          <li><a href="{% url 'contacto' %}">Contacto</a></li>
+          <li><a href="{% url 'inspiracion' %}">Inspiración</a></li>
+          <li><a href="{% url 'sobre-nosotros' %}">Sobre Nosotros</a></li>
+          <li><a href="{% url 'simulador' %}">Simulador</a></li>
+          <li><a href="{% url 'carrito' %}">Carrito</a></li>
         </ul>
       </nav>
   </header>

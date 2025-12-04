@@ -1,0 +1,75 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Simulador de Velas</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body class="fondo-inicio">
+
+  <!-- NAVBAR -->
+  <header class="container-nav">
+    <div class="logo">
+      <img src="{% static 'assets/img/Lume.png' %}" alt="Logo Lume" />
+    </div>
+
+    <input type="checkbox" id="menu-toggle">
+    <label for="menu-toggle" class="hamburguesa">&#9776;</label>
+
+    <nav class="menu-nav">
+      <ul class="lista">
+        <li><a href="{% url 'index' %}">Inicio</a></li>
+        <li><a href="{% url 'sobre-nosotros' %}">Sobre Nosotros</a></li>
+        <li><a href="{% url 'inspiracion' %}">Inspiración</a></li>
+        <li><a href="{% url 'blog' %}">Blog</a></li>
+        <li><a href="{% url 'contacto' %}">Contacto</a></li>
+        <li><a href="{% url 'simulador' %}">Simulador</a></li>
+        <li><a href="{% url 'carrito' %}">Carrito</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- MAIN -->
+  <main>
+    <h1 class="simulador-titulo">Simulador de Velas</h1>
+    <p class="simulador-descripcion">Probá nuestras velas seleccionadas especialmente para vos.</p>
+
+    <!-- Sección: Catálogo de Velas -->
+    <section id="catalogo" class="simulador-grid">
+      {% for vela in velas %}
+        <div class="simulador-card">
+          <h3>{{ vela.nombre }}</h3>
+          <p>{{ vela.descripcion }}</p>
+          <p class="precio">${{ vela.precio }}</p>
+          <a href="{% url 'agregar_carrito' vela.id %}" class="btn btn-primary">Agregar al carrito</a>
+        </div>
+      {% endfor %}
+    </section>
+
+    <!-- Enlace rápido al carrito -->
+    <section id="seleccion" class="simulador-seleccion">
+      <a href="{% url 'carrito' %}" class="btn btn-success">Ver carrito</a>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="container-footer">
+    <ul class="lista">
+      <li><a href="{% url 'index' %}">Inicio</a></li>
+      <li><a href="{% url 'sobre-nosotros' %}">Sobre Nosotros</a></li>
+      <li><a href="{% url 'inspiracion' %}">Inspiración</a></li>
+      <li><a href="{% url 'blog' %}">Blog</a></li>
+      <li><a href="{% url 'contacto' %}">Contacto</a></li>
+      <li><a href="{% url 'simulador' %}">Simulador</a></li>
+      <li><a href="{% url 'carrito' %}">Carrito</a></li>
+    </ul>
+  </footer>
+
+  <!-- JS de encuesta -->
+  <script src="{% static 'script.js' %}"></script>
+
+</body>
+</html>
+
