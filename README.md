@@ -87,8 +87,22 @@ python manage.py migrate
 Levantar el servidor
 python manage.py runserver
 
+Abrir el navegador en:
+http://127.0.0.1:8000
 
+## 🧩 Requisitos
 
+- Python >= 3.13
+- Django >= 5.2.6
+- Navegador moderno (Chrome, Firefox, Edge)
+- (Opcional) Bootstrap 5 si querés modificar estilos
+
+## 🔧 Desarrollo y Contribuciones
+
+- Agregar nuevas páginas en `core/views.py` y `templates/pages/`
+- Agregar nuevos estilos en `static/scss/` y compilar a `static/css/`
+- Los scripts JS se encuentran en `static/script.js`
+- Persistencia del carrito en LocalStorage, para resetear borrá `localStorage.clear()` en el navegador
 
 
 
